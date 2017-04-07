@@ -34,7 +34,7 @@ class Post extends Model
 
 	public static function archives ()
 	{
-		return static::selectRaw("to_char(created_at, 'YYYY') as year, to_char(created_at, 'Month') as month, count(*) as published") 
+		return static::selectRaw("to_char(created_at, 'YYYY') as year, to_char(created_at, 'FMMonth') as month, count(*) as published") 
             ->groupBy('year', 'month')
             ->orderByRaw('min(created_at) desc')
             ->get()
